@@ -3,12 +3,13 @@ import SpanText                  from "../spanText";
 import useDropping               from "../../../ux/hooks/useDropping";
 
 const TooManyRequests = ({ item, setItem }) => {
-    const handleCloseItem = () => setItem(false);
 
+    const handleCloseItem = () => setItem(false);
     const { modalRef } = useDropping();
+
     return (
         <div className="absolute w-full h-full flex justify-center items-center z-50 backdrop-blur">
-            <div ref={modalRef} data-translate-modal className="w-11/12 h-3/4 shadow-md bg-white rounded-md flex -translate-y-80 opacity-0">
+            <div ref={modalRef} className="w-11/12 h-3/4 shadow-md bg-white rounded-md flex -translate-y-80 opacity-0">
                 <div className="hidden lg:flex flex-col justify-start lg:rounded-l-md lg:w-1/3 h-full">
                     <div className="w-full aspect-square">
                         {svg.register}
