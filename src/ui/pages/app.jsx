@@ -9,6 +9,7 @@ import SideSectionHomeResumeItem from "../components/sideSectionHome/sideSection
 import retrieve                  from "../../ux/utils/retrieve";
 import { useGeneralContext }     from "../../ux/contexts/general.context";
 import useItemInput              from "../../ux/hooks/useItemInput";
+import useDropping               from "../../ux/hooks/useDropping";
 
 const currVersion = 'v0';
 
@@ -74,21 +75,11 @@ const TooManyRequestsByGuestUser = ({item, setItem}) => {
         };
     }, [item]);
 
-    useEffect(() => {
-        setTimeout(() => {
-            const dataTranslateModal = document.querySelector('[data-translate-modal]');
-            dataTranslateModal.style.transform = 'translateY(0)';
-            dataTranslateModal.style.opacity = '1';
-            dataTranslateModal.style.transition = 'transform 0.4s ease-in-out';
-            setTimeout(() => {
-                dataTranslateModal.style.animation = 'shake 0.5s ease-in-out';
-                dataTranslateModal.style.animationIterationCount = '1';
-            }, 400);
-        }, 200);
-    }, []);
+    const { modalRef } = useDropping();
+
     return (
         <div className="absolute w-full h-full flex justify-center items-center z-50 backdrop-blur">
-            <div data-translate-modal className="w-11/12 h-3/4 shadow-md bg-white rounded-md flex -translate-y-80 opacity-0">
+            <div ref={modalRef} className="w-11/12 h-3/4 shadow-md bg-white rounded-md flex -translate-y-80 opacity-0">
                 <div className="hidden lg:flex flex-col justify-start lg:rounded-l-md lg:w-1/3 h-full">
                     <div className="w-full aspect-square">
                         {svg.register}
@@ -144,21 +135,11 @@ const TooManyRequestsByGuestUser = ({item, setItem}) => {
 };
 const TooManyRequests = ({ item, setItem }) => {
     const handleCloseItem = () => setItem(false);
-    useEffect(() => {
-        setTimeout(() => {
-            const dataTranslateModal = document.querySelector('[data-translate-modal]');
-            dataTranslateModal.style.transform = 'translateY(0)';
-            dataTranslateModal.style.opacity = '1';
-            dataTranslateModal.style.transition = 'transform 0.4s ease-in-out';
-            setTimeout(() => {
-                dataTranslateModal.style.animation = 'shake 0.5s ease-in-out';
-                dataTranslateModal.style.animationIterationCount = '1';
-            }, 400);
-        }, 200);
-    }, []);
+
+    const { modalRef } = useDropping();
     return (
         <div className="absolute w-full h-full flex justify-center items-center z-50 backdrop-blur">
-            <div data-translate-modal className="w-11/12 h-3/4 shadow-md bg-white rounded-md flex -translate-y-80 opacity-0">
+            <div ref={modalRef} data-translate-modal className="w-11/12 h-3/4 shadow-md bg-white rounded-md flex -translate-y-80 opacity-0">
                 <div className="hidden lg:flex flex-col justify-start lg:rounded-l-md lg:w-1/3 h-full">
                     <div className="w-full aspect-square">
                         {svg.register}
@@ -192,21 +173,12 @@ const Registration = ({item, setItem}) => {
         localStorage.setItem('version', currVersion);
         setItem(false);
     };
-    useEffect(() => {
-        setTimeout(() => {
-            const dataTranslateModal = document.querySelector('[data-translate-modal]');
-            dataTranslateModal.style.transform = 'translateY(0)';
-            dataTranslateModal.style.opacity = '1';
-            dataTranslateModal.style.transition = 'transform 0.4s ease-in-out';
-            setTimeout(() => {
-                dataTranslateModal.style.animation = 'shake 0.5s ease-in-out';
-                dataTranslateModal.style.animationIterationCount = '1';
-            }, 400);
-        }, 200);
-    }, []);
+
+    const { modalRef } = useDropping();
+    
     return (
         <div className="absolute w-full h-full flex justify-center items-center z-50 backdrop-blur">
-            <div data-translate-modal className="w-11/12 h-3/4 shadow-md bg-white rounded-md flex -translate-y-80 opacity-0">
+            <div ref={modalRef} data-translate-modal className="w-11/12 h-3/4 shadow-md bg-white rounded-md flex -translate-y-80 opacity-0">
                 <div className="hidden lg:flex flex-col justify-start lg:rounded-l-md lg:w-1/3 h-full">
                     <div className="w-full aspect-square">
                         <div className="w-full p-12">
