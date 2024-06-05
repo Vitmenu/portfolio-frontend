@@ -4,8 +4,7 @@ import { imgModal } from "../../ux/events/cust-event";
 
 const Image = ({ objKey, wrapperClasses, contentClasses, loadingClasses, alt, loading="lazy", }) => {
     const { media } = useGetMedia({ objKey });
-    
-    const handleClickZoomIn = () => imgModal({ media });
+    const handleClickZoomIn = () => imgModal({ media });
 
     return media ? (
         <div className={"flex justify-center items-center " + wrapperClasses}>
