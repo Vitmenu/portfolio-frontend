@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import retrieve from "../utils/retrieve";
 
-const useGetMedia = ({ objKey }) => {
+const useGetMedia = ({ objKey, dependencies=[] }) => {
 
     const [media, setMedia] = useState();
 
@@ -23,7 +23,7 @@ const useGetMedia = ({ objKey }) => {
                 };
             });
         };
-    }, []);
+    }, dependencies);
 
     return {
         media,

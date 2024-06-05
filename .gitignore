@@ -8,10 +8,9 @@ tailwind.config.js
 vite.config.js
 exec
 
-src/ux/utils/retrieve.js
 src/ux/env.js
 
-# Pasted from .gitignore in portfoilo project
+# Copy and pasted from .gitignore in portfoilo project
 
 *.log
 

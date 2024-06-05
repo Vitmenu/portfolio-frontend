@@ -1,13 +1,15 @@
-import { useEffect, useState }                 from "react";
-import SidebarModalItem             from "./sidebarModalItem";
-import * as svg                     from "../svgs";
-import ProfileImage                 from "../profileImage";
-import Tooltip                      from "../tooltip";
-import ModalTab                     from "../modalTab";
-import TitleChangable               from "../titleChangable";
-import Loading                      from "../loading";
-import useItemInput                 from "../../../ux/hooks/useItemInput";
-import { useGeneralContext }        from "../../../ux/contexts/general.context";
+import { useEffect, useState } from "react";
+import SidebarModalItem        from "./sidebarModalItem";
+import * as svg                from "../svgs";
+import ProfileImage            from "../profileImage";
+import Tooltip                 from "../tooltip";
+import ModalTab                from "../modalTab";
+import TitleChangable          from "../titleChangable";
+import Loading                 from "../loading";
+import useItemInput            from "../../../ux/hooks/useItemInput";
+import useGetMedia             from "../../../ux/hooks/useGetMedia";
+import { imgEditorModal }      from "../../../ux/events/cust-event";
+import { useGeneralContext }   from "../../../ux/contexts/general.context";
 
 const SidebarUserProfile = ({ titleId, parentItem, setParentItem, thisUser, handleUpdateEntity }) => {
 
@@ -66,6 +68,11 @@ const SidebarFooterItem = () => {
         handleUpdateEntity,
         handleRemoveAll,
     }                                   = useGeneralContext();
+
+    const { media } = useGetMedia({
+        objKey: thisUser?.image_key,
+        dependencies: [thisUser],
+    });
     
     const modalItemHeight = `2.4rem`;
     const modalTabTranslateY = (n) => `calc(-${modalItemHeight} * 0.8 * ${n})`;
@@ -82,6 +89,7 @@ const SidebarFooterItem = () => {
         };
     };
     const onClickChangeProfilePhoto = () => {
+        imgEditorModal({ media });
         setItem(false);
     };
     const onClickExit = () => handleRemoveAll();

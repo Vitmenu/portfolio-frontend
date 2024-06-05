@@ -1,4 +1,4 @@
-export const imgModal = ({media} = {}) => {
+export const imgModal = ({ media } = {}) => {
     try {
         const custEvent = new CustomEvent('cust-img-modal', {
             detail: {
@@ -10,12 +10,11 @@ export const imgModal = ({media} = {}) => {
         return false;
     };
 };
-export const imgEditorModal = ({media, isThisUser} = {}) => {
+export const imgEditorModal = ({ media } = {}) => {
     try {
         const custEvent = new CustomEvent('cust-img-editor-modal', {
             detail: {
                 imgUrl: media,
-                isThisUser,
             },
         });
         dispatchEvent(custEvent);

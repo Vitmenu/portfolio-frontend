@@ -16,7 +16,7 @@ import useItemInput               from "../../ux/hooks/useItemInput";
 
 const App = () => {
 
-    const currVersion = 'v0';
+    const currVersion = 'v-0.0.1';
 
     const [sidebarClosed, setSidebarClosed] = useState(localStorage.getItem('sidebar-closed'));
     const location                          = useLocation();

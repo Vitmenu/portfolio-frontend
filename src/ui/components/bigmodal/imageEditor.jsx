@@ -34,10 +34,7 @@ const ImageEditor = ({ img, setImg, thisUser, setItem }) => {
         };
     };
 
-    const handleClickDelete = () => {
-        setNewImage();
-        // setImg();
-    };
+    const handleClickDelete = () => setNewImage();
 
     const handleClickSave = async () => {
 

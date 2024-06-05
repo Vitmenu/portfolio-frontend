@@ -1,19 +1,15 @@
-import { useState, useEffect } from "react";
-import useItemInput from "../../ux/hooks/useItemInput"
 import useGetMedia  from "../../ux/hooks/useGetMedia"
 import {
     imgModal,
     imgEditorModal,
 } from "../../ux/events/cust-event";
 
-// https://www.npmjs.com/package/multer
-
-const ProfileImage = ({ isThisUser, onClick, alt='PFP', contentClasses, loading='eager', image_key, defaultSvg, styles, classes, defaultClasses="w-7 h-7 min-w-7 min-h-7 rounded-full bg-white text-black flex justify-center items-center " }) => {
+const ProfileImage = ({ isThisUser, onClick, alt='unknown', contentClasses, loading='eager', image_key, defaultSvg, styles, classes, defaultClasses="w-7 h-7 min-w-7 min-h-7 rounded-full bg-white text-black flex justify-center items-center " }) => {
 
     const { media } = useGetMedia({ objKey: image_key });
 
     const handleClickZoomIn = () => imgModal({ media });
-    const handleClickOpenEditorModal = () => imgEditorModal({ media, isThisUser })
+    const handleClickOpenEditorModal = () => imgEditorModal({ media })
 
     const handleClickProfile = () => {
         try {
