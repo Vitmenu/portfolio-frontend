@@ -5,9 +5,7 @@ const SideSectionHomeResumeSection = ({ titleLang, classes, children }) => {
     return (
         <div id={titleLang} className={biographSection + classes}>
             <SpanText dataLang={titleLang} classes={"flex text-xl font-light"}/>
-            <div className="flex flex-col w-full h-full space-y-4">
-                {children}
-            </div>
+            {children}
         </div>
     );
 };

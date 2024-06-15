@@ -14,6 +14,21 @@ import {
     SideSectionHomeProjectDescriptionLeft,
 }                                    from "../components/sideSectionHome/sideSectionHomeProjectDescription";
 
+const Project = ({ wrapperId, children }) => {
+    return (
+        <div id={wrapperId} className="flex flex-col w-full h-full space-y-6 md:space-y-14 my-12">
+            {children}
+        </div>
+    );
+};
+const ProjectDescription = ({ children }) => {
+    return (
+        <div className="flex flex-col w-full justify-start items-start space-y-12 px-0 md:px-4">
+            {children}
+        </div>
+    );
+};
+
 const SideSectionHome = () => {
     const biographRef       = useRef();
     const biographSection = "flex flex-col px-6 py-8 md:py-12 space-y-6 md:space-y-8 ";
@@ -21,7 +36,6 @@ const SideSectionHome = () => {
     return (
         <div className={"flex justify-between w-full"}>
             <div ref={biographRef} className="overflow-y-scroll w-full lg:w-[calc(100%-20rem)] px-4 lg:px-8 divide-y">
-                
                 <div id="intro" className={biographSection + " mt-12"}>
                     <div className="flex justify-between items-center space-x-0 lg:space-x-12">
                         <div className="basis-1/2 lg:basis-3/4 flex flex-col justify-between lg:justify-start items-start space-y-1 lg:space-y-4 h-32 lg:h-fit">
@@ -41,60 +55,36 @@ const SideSectionHome = () => {
                     </div>
                     <SpanText dataLang={"itr"} classes={"flex lg:hidden"}/>
                 </div>
-                
                 <SideSectionHomeResumeSection titleLang={"education"}>
                     <SideSectionHomeResumeItem titleLang={"bch"} listItemLangs={["susj", "egdm"]} />
                     <SideSectionHomeResumeItem titleLang={"rcw"} listItemLangs={["ecan", "bsin"]} />
                 </SideSectionHomeResumeSection>
-                
                 <SideSectionHomeResumeSection titleLang={"experience"}>
                     <SideSectionHomeResumeItem titleLang={"jpro"} listItemLangs={["nvag", "omsj"]} />
                     <SideSectionHomeResumeItem titleLang={"rka"} listItemLangs={["fese", "pgrk"]} />
                     <SideSectionHomeResumeItem titleLang={"uqsm"} listItemLangs={["pgr1", "pgr2"]} />
                 </SideSectionHomeResumeSection>
-
                 <SideSectionHomeResumeSection titleLang={"skills"}>
                     <SideSectionHomeResumeItem titleLang={"cien"} listItemLangs={["pgr3", "pgr4"]} />
                     <SideSectionHomeResumeItem titleLang={"fsdm"} listItemLangs={["pgr5", "pgr6", "pgr7", "pgr8"]} />
                     <SideSectionHomeResumeItem titleLang={"lsls"} listItemLangs={["en", "ja", "ko"]} />
                 </SideSectionHomeResumeSection>
-
-                {/* Team Project */}
-                <div className={biographSection + "space-y-16 md:space-y-24"}>
-                    <SpanText dataLang={"teamp"} classes={"flex text-xl font-light"}/>
-                    <div id="teamp-vitmenu-team" className="flex flex-col w-full h-full space-y-6 md:space-y-14 my-12">
+                <SideSectionHomeResumeSection titleLang={"teamp"}>
+                    <Project wrapperId={"teamp-vitmenu-team"}>
                         <SideSectionHomeProjectHead title={"Vitmenu Inklings"} period={"1st Jun 2024 ~ Present"} members={["kjy", "qstn"]}/>
                         <div className="flex w-full justify-end items-start">
                             Coming Soon...!
                         </div>
-                        {/* <SideSectionHomeProjectSummary objkey={"portfolio-demonstration.mov"} descLang={"vmdpf"}/>
-                        <div className="flex flex-col w-full justify-start items-start space-y-12 px-0 md:px-4">
-                            <SideSectionHomeProjectDescriptionRight titleLang={"ftes1"} descLang={"lid0"} objkey={"portfolio-erd.png"}/>
-                            <SideSectionHomeProjectDescriptionLeft titleLang={"pled2"} descLang={"lid3"} objkey={"teamlab.png"}/>
-                        </div>
-                        <div className="flex w-full justify-end items-start">
-                            <div className="w-fit md:w-1/2 h-fit flex justify-around items-center space-x-8">
-                                <div className="w-8 rounded-lg">{svg.nodejs}</div>
-                                <div className="w-8 rounded-lg">{svg.aws}</div>
-                                <div className="w-8 rounded-lg">{svg.tailwindcss}</div>
-                                <div className="w-8 rounded-lg">{svg.openai}</div>
-                                <div className="w-8 rounded-lg">{svg.react}</div>
-                            </div>
-                        </div> */}
-                    </div>
-                </div>
-                
-                {/* projects */}
-                <div className={biographSection + "space-y-16 md:space-y-24"}>
-                    <SpanText dataLang={"projects"} classes={"flex text-xl font-light"}/>
-                    {/* Vitmenu Portfolio */}
-                    <div id="project-vitmenu-portfolio" className="flex flex-col w-full h-full space-y-6 md:space-y-14 my-12">
+                    </Project>
+                </SideSectionHomeResumeSection>
+                <SideSectionHomeResumeSection titleLang={"projects"}>
+                    <Project wrapperId={"project-vitmenu-portfolio"}>
                         <SideSectionHomeProjectHead title={"Vitmenu Portfolio"} period={"12th April 2024 ~ Present"} />
                         <SideSectionHomeProjectSummary objkey={"portfolio-demonstration.mov"} descLang={"vmdpf"}/>
-                        <div className="flex flex-col w-full justify-start items-start space-y-12 px-0 md:px-4">
+                        <ProjectDescription>
                             <SideSectionHomeProjectDescriptionRight titleLang={"ftes1"} descLang={"lid0"} objkey={"portfolio-erd.png"}/>
                             <SideSectionHomeProjectDescriptionLeft titleLang={"pled2"} descLang={"lid3"} objkey={"teamlab.png"}/>
-                        </div>
+                        </ProjectDescription>
                         <div className="flex w-full justify-end items-start">
                             <div className="w-fit md:w-1/2 h-fit flex justify-around items-center space-x-8">
                                 <div className="w-8 rounded-lg">{svg.nodejs}</div>
@@ -104,32 +94,29 @@ const SideSectionHome = () => {
                                 <div className="w-8 rounded-lg">{svg.react}</div>
                             </div>
                         </div>
-                    </div>
-                    {/* Vitmenu */}
-                    <div id="project-vitmenu" className="flex flex-col w-full h-full space-y-6 md:space-y-14 my-12">
+                    </Project>
+                    <Project wrapperId={"project-vitmenu"}>
                         <SideSectionHomeProjectHead title={"Vitmenu"} period={"Oct 2022 ~ Mar (Suspended)"} />
                         <SideSectionHomeProjectSummary objkey={"project.mov"} descLang={"vmd"} justify="right"/>
-                        <div className="flex flex-col w-full justify-start items-start space-y-12 px-0 md:px-4">
+                        <ProjectDescription>
                             <SideSectionHomeProjectDescriptionLeft titleLang={"sor"} descLang={"lid6"} objkey={"erm.png"}/>
                             <SideSectionHomeProjectDescriptionRight titleLang={"frow"} descLang={"lid9"} objkey={"project-0.png"}/>
-                        </div>
+                        </ProjectDescription>
                         <div className="flex justify-start items-start space-x-0 lg:space-x-12 overflow-x-scroll">
                             <div className="w-fit h-fit flex justify-start items-center space-x-12">
                                 <Image objKey={'project-1.png'} wrapperClasses={"w-40"} contentClasses={"rounded-lg border "} loadingClasses={"rounded-lg "} alt={"not found"} loading="eager" />
                                 <Image objKey={'project-2.png'} wrapperClasses={"w-40"} contentClasses={"rounded-lg border "} loadingClasses={"rounded-lg "} alt={"not found"} loading="eager" />
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                {/* Interests and Hobbies */}
-                <div id="personality" className={biographSection}>
-                    <SpanText dataLang={"personality"} classes={"flex text-xl font-light"}/>
+                    </Project>
+                </SideSectionHomeResumeSection>
+
+                <SideSectionHomeResumeSection titleLang={"personality"}>
                     <SideSectionHomeResumeItem titleLang={"hb1"} listItemLangs={["hb1desc"]} />
                     <SideSectionHomeResumeItem titleLang={"hb2"} listItemLangs={["hb2desc"]} />
                     <SideSectionHomeResumeItem titleLang={"hb3"} listItemLangs={["hb3desc"]} />
                     <SideSectionHomeResumeItem titleLang={"hb4"} listItemLangs={["hb4desc"]} />
-                </div>
+                </SideSectionHomeResumeSection>
             </div>
             <SideSectionHomeSideNavbar biographRef={biographRef} />
         </div>

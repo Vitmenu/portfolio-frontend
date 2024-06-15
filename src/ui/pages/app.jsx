@@ -1,16 +1,13 @@
 import { useState, useEffect }    from "react";
 import { Outlet, useLocation }    from "react-router-dom";
-
 import ChatBoard                  from "../layouts/chatBoard";
 import Sidebar                    from "../layouts/sidebar";
-
 import Tooltip                    from "../components/tooltip";
 import * as svg                   from "../components/svgs";
 import TooManyRequestsByGuestUser from "../components/bigmodal/tooManyRequestsByGuestUser";
 import TooManyRequests            from "../components/bigmodal/tooManyRequests";
 import Registration               from "../components/bigmodal/registration";
 import ImageEditor                from "../components/bigmodal/imageEditor";
-
 import { useGeneralContext }      from "../../ux/contexts/general.context";
 import useItemInput               from "../../ux/hooks/useItemInput";
 
